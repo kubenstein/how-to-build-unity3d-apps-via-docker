@@ -1,0 +1,24 @@
+name: Build and deploy to production
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy-to-production:
+    name: Build and deploy to production
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Build project
+        run: |
+          ./scripts/build-docker.sh
+
+      - name: deploy to XXX
+        run: |
+          # deployment to AWS...
